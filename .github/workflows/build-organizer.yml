@@ -1,0 +1,37 @@
+name: Build CAD exports
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'desk-organizer/src/**'
+      - 'desk-organizer/parameters.json'
+      - '.github/workflows/build-organizer.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-activate-base: false
+          activate-environment: cad
+          python-version: '3.11'
+          channels: conda-forge
+          channel-priority: strict
+      - name: Install CadQuery
+        shell: bash -el {0}
+        run: conda install -y -c conda-forge cadquery
+      - name: Generate STL and STEP
+        shell: bash -el {0}
+        run: python desk-organizer/src/build.py
+      - name: Commit generated models
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f desk-organizer/models/organizer_rev_r.stl desk-organizer/models/organizer_rev_r.step
+          if ! git diff --cached --quiet; then
+            git commit -m "Build Rev R STL and STEP"
+            git push
+          fi
