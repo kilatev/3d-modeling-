@@ -1,0 +1,66 @@
+{
+  "revision": "R",
+  "units": "mm",
+  "nominal": {
+    "base_width": 200,
+    "base_depth": 183.999999,
+    "base_height": 6.666667,
+    "divider_count": 7,
+    "divider_x_start": 10,
+    "divider_x_end": 151.111111,
+    "divider_foot_y": [
+      9.333333,
+      34.666666,
+      59.999999,
+      85.333332,
+      110.666665,
+      135.999998,
+      161.333331
+    ],
+    "divider_heights_above_base": [
+      140,
+      140,
+      140,
+      140,
+      140,
+      140,
+      140
+    ],
+    "divider_thickness": 5.333333,
+    "divider_top_rear_offset": 0,
+    "pen_cup_centers": [
+      [
+        174.444444,
+        60
+      ],
+      [
+        174.444444,
+        124
+      ]
+    ],
+    "pen_cup_count": 2,
+    "pen_cup_outer_diameter": 32,
+    "pen_cup_inner_diameter": 24,
+    "pen_cup_height_above_base": 86.666667
+  },
+  "clearances": {
+    "slot_nominal_gaps": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20
+    ]
+  },
+  "derived": {
+    "overall_height": 146.666667,
+    "divider_width": 141.111111,
+    "slot_count": 6
+  },
+  "print_orientation": "Z=0 on bed, X right Y rear",
+  "assumptions": [
+    "Reference geometry is provisional",
+    "X-axis dimensions narrowed from Rev Q to fit Creality K1"
+  ]
+}
